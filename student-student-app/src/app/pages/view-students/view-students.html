@@ -1,0 +1,42 @@
+<div class="student-page">
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="onView()">
+      👀 View Students
+    </button>
+
+    <button mat-raised-button color="accent" routerLink="/students/add">
+      ➕ Add Student
+    </button>
+  </div>
+
+  <div class="card-container" *ngIf="students.length > 0">
+    <mat-card *ngFor="let student of students" class="student-card">
+      <mat-card-header>
+        <mat-card-title>{{ student.name }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ student.id }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>DOB:</strong> {{ student.dateOfBirth }}</p>
+        <p><strong>Age:</strong> {{ student.age }}</p>
+        <p><strong>Address:</strong> {{ student.address }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-stroked-button color="primary" [routerLink]="['/students/update', student.id]">Update</button>
+        <button mat-stroked-button color="warn" (click)="onDelete(student)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- No Students -->
+  <div class="no-students" *ngIf="students.length === 0 && isLoaded">
+    <p>No students available.</p>
+  </div>
+
+  <button mat-raised-button color="primary" routerLink="/home" class="back-button">
+    🏠 Back to Home
+  </button>
+
+</div>

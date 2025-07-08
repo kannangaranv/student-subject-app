@@ -1,8 +1,10 @@
 .sidebar-content {
+  
   width: 200px;
   min-height: 100vh;
   background-color: #021d38; 
   color: white;
+  padding-top: 50px;
   
 }
 
