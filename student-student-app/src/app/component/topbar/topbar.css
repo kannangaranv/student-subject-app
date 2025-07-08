@@ -1,0 +1,20 @@
+.custom-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #021d38; /* Material Blue 700 */
+  color: white;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.toolbar-title {
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}

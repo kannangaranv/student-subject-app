@@ -1,0 +1,14 @@
+<div >
+  <button mat-icon-button (click)="toggleSidebar()" class ="toggle-button">
+    <mat-icon>{{ isOpen ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="isOpen" class="sidebar-content">
+  <mat-nav-list>
+    <a mat-list-item routerLink="/home"><mat-icon>home</mat-icon><span class="font-color"> Home</span></a>
+    <a mat-list-item routerLink="/students"><mat-icon>school</mat-icon><span class="font-color"> Students</span></a>
+    <a mat-list-item routerLink="/subjects"><mat-icon>book</mat-icon><span class="font-color"> Subjects</span></a>
+    <a mat-list-item routerLink="/assign"><mat-icon>assignment</mat-icon><span class="font-color"> Assign</span></a>
+  </mat-nav-list>
+</div>

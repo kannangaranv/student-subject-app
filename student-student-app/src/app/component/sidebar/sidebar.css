@@ -1,0 +1,31 @@
+.sidebar-content {
+  width: 200px;
+  min-height: 100vh;
+  background-color: #021d38; 
+  color: white;
+  
+}
+
+.toggle-button {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  background-color: #021d38; 
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+mat-list-item {
+  color: white;
+}
+
+mat-icon {
+  margin-right: 8px;
+  color: white;
+}
+
+.font-color {
+  color: white;
+}
