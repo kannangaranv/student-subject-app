@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 
 
@@ -28,6 +29,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class UpdateStudent implements OnInit {
   studentForm!: FormGroup;
   studentId!: string;
+  today: string = new Date().toISOString().split('T')[0]; 
+
+  dateNotInFutureValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+    const selectedDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // ignore time portion
+    return selectedDate > today ? { invalidDate: true } : null;
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +50,7 @@ export class UpdateStudent implements OnInit {
     
     this.studentForm = this.fb.group({
       name: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      dateOfBirth: ['', [Validators.required, this.dateNotInFutureValidator]],
       age: ['', Validators.required],
       address: ['', Validators.required]
     });

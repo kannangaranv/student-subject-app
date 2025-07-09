@@ -15,18 +15,8 @@ export class App {
   constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    this.tokenService.fetchAccessToken().subscribe({
-      next: (response) => {
-        const token = response.access_token;
-        if (token) {
-          localStorage.setItem('accessToken', token);
-          console.log('Access token stored in localStorage successfully.');
-        }
-      },
-      error: (err) => {
-        console.error('Failed to get token:', err);
-      }
-    });
+    this.tokenService.checkAndRefreshAuthCode();
+    console.log('App initialized and auth code checked.');
   }
 }
 

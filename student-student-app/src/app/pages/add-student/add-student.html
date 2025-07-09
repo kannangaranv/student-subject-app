@@ -11,7 +11,7 @@
 
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Date of Birth</mat-label>
-    <input matInput formControlName="dateOfBirth" type="date" required />
+    <input matInput formControlName="dateOfBirth" type="date" [max]="today" required />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="form-field">

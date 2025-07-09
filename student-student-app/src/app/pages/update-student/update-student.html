@@ -1,3 +1,7 @@
+<h2 class="title">Update Student</h2>
+<button mat-raised-button color="warn" routerLink="/students" class="back-button">
+    Back
+</button>
 <form [formGroup]="studentForm" (ngSubmit)="onUpdate()" class="form-container">
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Name</mat-label>
@@ -6,7 +10,7 @@
 
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Date of Birth</mat-label>
-    <input matInput formControlName="dateOfBirth" type="date" />
+    <input matInput formControlName="dateOfBirth" type="date" [max]="today"  />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="form-field">
@@ -19,5 +23,7 @@
     <input matInput formControlName="address" />
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">💾 Save</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!studentForm.valid">
+    Save
+  </button>
 </form>
