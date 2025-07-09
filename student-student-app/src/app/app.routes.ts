@@ -9,6 +9,7 @@ import { UpdateStudent } from './pages/update-student/update-student';
 import { ViewSubjects } from './pages/view-subjects/view-subjects';
 import { AddSubject } from './pages/add-subject/add-subject';
 import { UpdateSubject } from './pages/update-subject/update-subject';
+import { ViewSubjectAssign } from './pages/view-subject-assign/view-subject-assign';
 
 export const routes: Routes = [
   { path: '', component: Login }, 
@@ -19,7 +20,8 @@ export const routes: Routes = [
   { path: 'students/add', component: AddStudent, pathMatch: 'full' },
   { path: 'subjects/add', component: AddSubject, pathMatch: 'full' },
   { path: 'students/update/:id', component: UpdateStudent, pathMatch: 'full' },
-  { path: 'subjects/update/:id', component: UpdateSubject, pathMatch: 'full' } 
+  { path: 'subjects/update/:id', component: UpdateSubject, pathMatch: 'full' },
+  { path: 'assign', component: ViewSubjectAssign, pathMatch: 'full' }
 ];
 
 @NgModule({

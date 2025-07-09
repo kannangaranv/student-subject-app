@@ -1,0 +1,22 @@
+<div class ="subject-page">
+  <div class="card-container" *ngIf="subjects.length > 0">
+    <mat-card *ngFor="let subject of subjects" class="subject-card">
+      <mat-card-header>
+        <mat-card-title>{{ subject.name }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ subject.id }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-actions class="action-buttons" align="end">
+        <button mat-stroked-button color="primary" [routerLink]="['/assigned/students', subject.id]">Assigned Students</button>
+        <button mat-stroked-button color="warn"  [routerLink]="['/assign/students', subject.id]">Assign Student</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="no-subjects" *ngIf="subjects.length === 0 && isLoaded">
+    <p>No subjects available.</p>
+  </div>
+
+  <button mat-raised-button color="primary" routerLink="/home" class="back-button">
+    🏠 Back to Home
+  </button>

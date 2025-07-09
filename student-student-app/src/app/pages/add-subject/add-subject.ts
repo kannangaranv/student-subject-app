@@ -7,12 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router'; 
 import { SubjectService } from '../../services/subject.service';
 import { RouterModule } from '@angular/router';
-import { AsyncValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-import { of } from 'rxjs';
-import { debounceTime, map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-subject',
+  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -26,7 +24,6 @@ import { debounceTime, map, catchError } from 'rxjs/operators';
 })
 export class AddSubject {
   subjectForm: FormGroup;
-  subjectNameExists: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,8 +36,8 @@ export class AddSubject {
   }
 
   onSubmit(): void {
-    console.log("subjectNameExists:", this.subjectNameExists);
-    if (this.subjectForm.valid && !this.subjectNameExists) {
+
+    if (this.subjectForm.valid) {
       this.subjectService.addSubject(this.subjectForm.value).subscribe({
         next: () => {
           alert('Subject added successfully!');
@@ -51,12 +48,6 @@ export class AddSubject {
           alert('Failed to add subject');
         }
       });
-    
-    } else {
-      alert('Please fill in all required fields.');
     }
   }
-
-  
-  
 }
