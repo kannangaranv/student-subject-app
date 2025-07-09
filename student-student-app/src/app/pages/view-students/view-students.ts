@@ -21,20 +21,12 @@ import { Router } from '@angular/router';
 export class ViewStudents implements OnInit {
   students: Student[] = [];
   isLoaded: boolean = false;
-  studentForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
     private studentService: StudentService
   ) {
-    this.studentForm = this.fb.group({
-      name: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
-      age: [null, [Validators.required, Validators.min(1)]],
-      address: ['', Validators.required]
-    });
   }
 
   ngOnInit(): void {
@@ -51,25 +43,13 @@ export class ViewStudents implements OnInit {
     });
   }
 
-  // onUpdate(student: Student) {
-  //   this.studentService.updateStudent(student.id, student).subscribe({
-  //     next: () => {
-  //       alert('Student updated successfully!');
-  //       this.router.navigate(['/students']);
-  //     },
-  //     error: (err) => {
-  //       console.error('Failed to update student:', err);
-  //       alert('Error updating student');
-  //     }
-  //   });
-  // }
-
+  
   onDelete(student: Student) {
     console.log('Delete clicked for:', student);
     this.studentService.deleteStudent(student.id).subscribe({
       next: () => {
         alert('Student deleted successfully!');
-        this.router.navigate(['/students']);
+        this.ngOnInit();
       },
       error: (err) => {
         console.error('Failed to delete student:', err);

@@ -15,8 +15,6 @@ export class App {
   constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    this.tokenService.checkAndRefreshAuthCode();
-    console.log('App initialized and auth code checked.');
   }
 }
 

@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   checkAndRefreshAuthCode(): void {
         const expiry = Number(localStorage.getItem('tokenExpiry')) || 0;
         const now = new Date().getTime();
 
         if (now >= expiry) {
-            console.log("Access token expired. Redirecting to get new auth code...");   
-            window.location.href = 'http://localhost:4200';
+            console.log("Access token expired. Redirecting to get new auth code...");
+            this.router.navigate(['']);
         } else {
             console.log("Access token is still valid.");
         }

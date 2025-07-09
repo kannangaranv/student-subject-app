@@ -1,0 +1,15 @@
+<h2 class ="title">Update Subject</h2>
+<button mat-raised-button color="warn" routerLink="/subjects" class="back-button">
+    Back
+</button>
+
+<form [formGroup]="subjectForm" (ngSubmit)="onUpdate()" class="form-container">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!subjectForm.valid">
+    Save
+  </button>
+</form>
