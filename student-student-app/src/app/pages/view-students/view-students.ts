@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
   
 
@@ -25,7 +26,8 @@ export class ViewStudents implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private cdr: ChangeDetectorRef
   ) {
   }
 
@@ -35,6 +37,7 @@ export class ViewStudents implements OnInit {
         this.students = data;
         console.log('Students fetched successfully:', this.students);
         this.isLoaded = true;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Failed to load students:', err);
@@ -50,6 +53,7 @@ export class ViewStudents implements OnInit {
       next: () => {
         alert('Student deleted successfully!');
         this.ngOnInit();
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Failed to delete student:', err);

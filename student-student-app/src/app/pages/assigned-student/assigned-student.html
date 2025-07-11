@@ -1,11 +1,5 @@
 <div class="student-page">
-  <h2 class="page-title">Manage Students</h2>
-
-  <div class="button-row">
-    <button mat-raised-button color="accent" routerLink="/students/add">
-      ➕ Add Student
-    </button>
-  </div>
+  <h2 class="page-title">Assigned Students of {{ subjectName }}</h2>
 
   <div class="card-container" *ngIf="students.length > 0">
     <mat-card *ngFor="let student of students" class="student-card">
@@ -20,9 +14,8 @@
         <p><strong>Address:</strong> {{ student.address }}</p>
       </mat-card-content>
 
-      <mat-card-actions align="end">
-        <button mat-stroked-button color="primary" [routerLink]="['/students/update', student.id]">Update</button>
-        <button mat-stroked-button color="warn" (click)="onDelete(student)" routerLink="/students">Delete</button>
+      <mat-card-actions align="end"> 
+        <button mat-stroked-button color="warn" (click)="onUnAssign(student)" [routerLink]="['/assigned/students', subjectId, subjectName]">Unassign</button>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -31,8 +24,8 @@
     <p>No students available.</p>
   </div>
 
-  <button mat-raised-button color="primary" routerLink="/home" class="back-button">
-    🏠 Back to Home
+  <button mat-raised-button color="primary" routerLink="/assign" class="back-button">
+    Back
   </button>
 
 </div>

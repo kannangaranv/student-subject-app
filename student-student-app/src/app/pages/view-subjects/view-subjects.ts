@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { SubjectService } from '../../services/subject.service';
 import { Subject } from '../../models/subject.model';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-view-subjects',
@@ -17,7 +18,7 @@ export class ViewSubjects implements OnInit {
   subjects: Subject[] = [];
   isLoaded: boolean = false;
 
-  constructor(private subjectService: SubjectService) {}
+  constructor(private subjectService: SubjectService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.subjectService.getAllSubjects().subscribe({
@@ -25,6 +26,7 @@ export class ViewSubjects implements OnInit {
         this.subjects = data;
         console.log('Subjects fetched successfully:', this.subjects);
         this.isLoaded = true;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Failed to load subjects:', err);
@@ -38,7 +40,8 @@ export class ViewSubjects implements OnInit {
     this.subjectService.deleteSubject(subject.id).subscribe({
       next: () => {
         alert('Subject deleted successfully!');
-        this.ngOnInit(); // Refresh the list after deletion
+        this.ngOnInit();
+        this.cdr.detectChanges(); 
       },
       error: (err) => {
         console.error('Failed to delete subject:', err);

@@ -10,6 +10,7 @@ import { TokenService } from './services/token.service';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+
 export class App {
   protected title = 'student-student-app';
   constructor(private tokenService: TokenService) {}
