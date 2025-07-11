@@ -1,0 +1,32 @@
+<h2 class="title">Add New Student</h2>
+
+<button mat-raised-button color="warn" routerLink="/students" class="back-button">
+    Back
+</button>
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="form-container">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Date of Birth</mat-label>
+    <input matInput formControlName="dateOfBirth" type="date" [max]="today" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Age</mat-label>
+    <input matInput type="number" formControlName="age" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" required />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!studentForm.valid">
+    Save
+  </button>
+</form>
+
+

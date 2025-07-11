@@ -1,0 +1,75 @@
+.subject-page{
+    justify-content: center;
+    padding: 24px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.button-row {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 24px;
+    justify-content: center;
+    display: flex;
+    gap: 16px;
+}
+
+.card-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.subject-card {
+    width: 300px;
+    padding: 16px;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease;
+}
+
+.subject-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+mat-card-title {
+    font-weight: 600;
+    color: #1a237e;
+}
+
+mat-card-subtitle {
+    font-size: 13px;
+    color: #666;
+}
+
+.no-students {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+}
+
+.back-button {
+  margin-top: 20px;
+  align-self: center;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
