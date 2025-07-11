@@ -10,8 +10,6 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-
-
 @Component({
   selector: 'app-update-student',
   standalone: true,

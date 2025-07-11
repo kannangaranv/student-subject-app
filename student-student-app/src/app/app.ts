@@ -15,7 +15,5 @@ export class App {
   protected title = 'student-student-app';
   constructor(private tokenService: TokenService) {}
 
-  ngOnInit(): void {
-  }
 }
 

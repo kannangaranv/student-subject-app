@@ -8,26 +8,16 @@ export class StudentService {
 
     getAllStudents() {
         this.tokenService.checkAndRefreshAuthCode();
-        var accessToken = localStorage.getItem('accessToken');
         return this.http.get<any>('http://localhost:5000/students/GetAll', {
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${accessToken}` }
-        });
-    }
-
-    getStudentById(id: string) {
-        this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>(`http://localhost:5000/students/GetById/${id}`,{
             headers: { 
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
         });
     }
 
-    getStudentByName(name: string) {
+    getStudentById(id: string) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>(`http://localhost:5000/students/GetByName/${name}`, {
+        return this.http.get<any>(`http://localhost:5000/students/GetById/${id}`,{
             headers: { 
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}` }

@@ -8,11 +8,10 @@ export class SubjectService {
 
     getAllSubjects() {
         this.tokenService.checkAndRefreshAuthCode();
-        var accessToken = localStorage.getItem('accessToken');
         return this.http.get<any>('http://localhost:5000/subjects/GetAll', {
             headers: { 
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${accessToken}` }
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
         });
     }
 
@@ -25,24 +24,24 @@ export class SubjectService {
         });
     }
 
-    getSubjectByName(name: string) {
-        this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>(`http://localhost:5000/subjects/GetByName/${name}`, {
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-        });
-    }
+    // getSubjectByName(name: string) {
+    //     this.tokenService.checkAndRefreshAuthCode();
+    //     return this.http.get<any>(`http://localhost:5000/subjects/GetByName/${name}`, {
+    //         headers: { 
+    //             'Content-Type': 'application/json',
+    //             Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+    //     });
+    // }
 
 
-    checkSubjectNameExists(name: string) {
-        this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>(`http://localhost:5000/subjects/CheckNameExists/${name}`, {
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-        });
-    }
+    // checkSubjectNameExists(name: string) {
+    //     this.tokenService.checkAndRefreshAuthCode();
+    //     return this.http.get<any>(`http://localhost:5000/subjects/CheckNameExists/${name}`, {
+    //         headers: { 
+    //             'Content-Type': 'application/json',
+    //             Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+    //     });
+    // }
     
     addSubject(subject: any) {
         this.tokenService.checkAndRefreshAuthCode();

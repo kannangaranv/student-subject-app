@@ -30,10 +30,10 @@ export class AssignStudent implements OnInit {
   ngOnInit(): void {
     this.subjectId = this.route.snapshot.paramMap.get('subjectId')!;
     this.subjectName = this.route.snapshot.paramMap.get('subjectName')!;
-    this.loadStudents(this.subjectId);
+    this.loadStudents();
   }
 
-  private loadStudents(subjectId: string) {
+  private loadStudents() {
     this.assignStudentService.getUnassignedStudentsBySubjectId(this.subjectId).subscribe({
       next: (data: Student[]) => {
         this.students = data;
@@ -53,7 +53,7 @@ export class AssignStudent implements OnInit {
     this.assignStudentService.assignStudentToSubject(this.subjectId,student.id).subscribe({
       next: () => {
         alert('Student assigned successfully!');
-        this.loadStudents(this.subjectId);
+        this.loadStudents();
         this.cdr.detectChanges();
       },
       error: (err) => {

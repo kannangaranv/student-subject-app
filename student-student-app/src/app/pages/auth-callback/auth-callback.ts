@@ -21,7 +21,7 @@ export class AuthCallback implements OnInit {
             next: (response) => {
               const token = response.access_token;
               if (token) {
-                const expiresIn = response.expires_in; // in seconds
+                const expiresIn = response.expires_in; 
                 const expiryTime = new Date().getTime() + expiresIn * 1000;
 
                 localStorage.setItem('accessToken', response.access_token);
@@ -33,7 +33,6 @@ export class AuthCallback implements OnInit {
               console.error('Failed to get token:', err);
             }
           });
-
 
         this.router.navigate(['/home']);
       } else {

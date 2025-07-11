@@ -15,6 +15,7 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './view-subject-assign.html',
   styleUrl: './view-subject-assign.css'
 })
+
 export class ViewSubjectAssign implements OnInit {
   subjects: Subject[] = [];
     isLoaded: boolean = false;
@@ -23,13 +24,8 @@ export class ViewSubjectAssign implements OnInit {
 
     ngOnInit(): void {
       this.loadSubjects();
-      
-      this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd && this.router.url.includes('/assign')) {
-        this.onView();
-      }
-  });
     }
+
 
     loadSubjects() {
       this.subjectService.getAllSubjects().subscribe({
@@ -44,9 +40,5 @@ export class ViewSubjectAssign implements OnInit {
           this.isLoaded = true;
         }
       });
-    }
-
-    onView() {
-      console.log('View clicked');
     }
 }

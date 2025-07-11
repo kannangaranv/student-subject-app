@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
@@ -24,8 +23,6 @@ export class ViewStudents implements OnInit {
   isLoaded: boolean = false;
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
     private studentService: StudentService,
     private cdr: ChangeDetectorRef
   ) {
@@ -61,10 +58,5 @@ export class ViewStudents implements OnInit {
       }
     });
   }
-
-
-  onView(){
-    console.log('View student clicked');
-  }
-  
+ 
 }

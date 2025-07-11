@@ -49,7 +49,4 @@ export class ViewSubjects implements OnInit {
       }
     });
   }
-
-  onView() {
-    console.log('View clicked');
-  }}
+}
