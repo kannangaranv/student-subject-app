@@ -22,7 +22,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './add-subject.html',
   styleUrl: './add-subject.css'
 })
+
 export class AddSubject {
+
   subjectForm: FormGroup;
 
   constructor(
@@ -35,8 +37,8 @@ export class AddSubject {
     });
   }
 
+  // Method to add a new subject
   onSubmit(): void {
-
     if (this.subjectForm.valid) {
       this.subjectService.addSubject(this.subjectForm.value).subscribe({
         next: () => {

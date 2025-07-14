@@ -9,6 +9,7 @@
 
   <div class="card-container" *ngIf="students.length > 0">
     <mat-card *ngFor="let student of students" class="student-card">
+      
       <mat-card-header>
         <mat-card-title>{{ student.name }}</mat-card-title>
         <mat-card-subtitle>ID: {{ student.id }}</mat-card-subtitle>

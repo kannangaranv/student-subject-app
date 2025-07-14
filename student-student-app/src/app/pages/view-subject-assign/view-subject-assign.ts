@@ -11,7 +11,12 @@ import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-view-subject-assign',
-  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './view-subject-assign.html',
   styleUrl: './view-subject-assign.css'
 })
@@ -20,14 +25,17 @@ export class ViewSubjectAssign implements OnInit {
   subjects: Subject[] = [];
     isLoaded: boolean = false;
 
-    constructor(private subjectService: SubjectService, private router: Router, private cdr: ChangeDetectorRef) {}
+    constructor(
+      private subjectService: SubjectService,
+      private cdr: ChangeDetectorRef
+    ) {}
 
     ngOnInit(): void {
       this.loadSubjects();
     }
 
-
-    loadSubjects() {
+    // Load all subjects
+    private loadSubjects() {
       this.subjectService.getAllSubjects().subscribe({
         next: (data: any[]) => {
           this.subjects = data;

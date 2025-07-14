@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Login implements OnInit {
 
+  // Redirect to Microsoft login page
   ngOnInit(): void {
     const tenantId = '4c1f8692-b5b7-46f5-bc82-2330d59a738d';
     const clientId = 'b3855099-7d77-4bed-a44e-582a2a0b77e7';

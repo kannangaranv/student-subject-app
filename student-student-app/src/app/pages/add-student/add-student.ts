@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,17 +23,18 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
     RouterModule
   ]
 })
+
 export class AddStudent {
   studentForm: FormGroup;
   today: string = new Date().toISOString().split('T')[0]; 
 
+  // Custom validator to check if the date is not in the future
   dateNotInFutureValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const selectedDate = new Date(control.value);
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // ignore time portion
+    today.setHours(0, 0, 0, 0); 
     return selectedDate > today ? { invalidDate: true } : null;
   };
-
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +49,7 @@ export class AddStudent {
     });
   }
 
-
+  // Method to add a new student
   onSubmit(): void {
     if (this.studentForm.valid) {
       this.studentService.addStudent(this.studentForm.value).subscribe({

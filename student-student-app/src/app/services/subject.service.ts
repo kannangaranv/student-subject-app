@@ -6,51 +6,33 @@ import { TokenService } from './token.service';
 export class SubjectService {
     constructor(private http: HttpClient, private tokenService: TokenService) {}
 
+    // Get all subjects
     getAllSubjects() {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>('http://localhost:5000/subjects/GetAll', {
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-        });
+        return this.http.get<any>('http://localhost:5000/subjects/GetAll');
     }
 
+    // Get subject by ID
     getSubjectById(id: string) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>(`http://localhost:5000/subjects/GetById/${id}`,{
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-        });
+        return this.http.get<any>(`http://localhost:5000/subjects/GetById/${id}`);
     }
 
+    // Add a new subject
     addSubject(subject: any) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.post<any>('http://localhost:5000/subjects/Add', subject, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }       
-        });
+        return this.http.post<any>('http://localhost:5000/subjects/Add', subject);
     }
 
+    // Update an existing subject
     updateSubject(id: string, subject: any) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.put<any>(`http://localhost:5000/subjects/Update/${id}`, subject, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }   
-        });
+        return this.http.put<any>(`http://localhost:5000/subjects/Update/${id}`, subject);
     }
 
+    // Delete a subject
     deleteSubject(id: string) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.delete<any>(`http://localhost:5000/subjects/Delete/${id}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        });
+        return this.http.delete<any>(`http://localhost:5000/subjects/Delete/${id}`);
     }
 }

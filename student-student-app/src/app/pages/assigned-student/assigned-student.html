@@ -1,8 +1,11 @@
 <div class="student-page">
+
   <h2 class="page-title">Assigned Students of {{ subjectName }}</h2>
 
   <div class="card-container" *ngIf="students.length > 0">
+
     <mat-card *ngFor="let student of students" class="student-card">
+
       <mat-card-header>
         <mat-card-title>{{ student.name }}</mat-card-title>
         <mat-card-subtitle>ID: {{ student.id }}</mat-card-subtitle>
@@ -17,6 +20,7 @@
       <mat-card-actions align="end"> 
         <button mat-stroked-button color="warn" (click)="onUnAssign(student)" [routerLink]="['/assigned/students', subjectId, subjectName]">Unassign</button>
       </mat-card-actions>
+      
     </mat-card>
   </div>
 

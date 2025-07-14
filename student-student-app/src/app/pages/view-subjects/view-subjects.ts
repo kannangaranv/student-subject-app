@@ -10,7 +10,12 @@ import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-view-subjects',
-  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './view-subjects.html',
   styleUrl: './view-subjects.css'
 })
@@ -18,8 +23,12 @@ export class ViewSubjects implements OnInit {
   subjects: Subject[] = [];
   isLoaded: boolean = false;
 
-  constructor(private subjectService: SubjectService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private subjectService: SubjectService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
+  // Load all subjects on component initialization
   ngOnInit(): void {
     this.subjectService.getAllSubjects().subscribe({
       next: (data: any[]) => {
@@ -35,6 +44,7 @@ export class ViewSubjects implements OnInit {
     });
   }
 
+  // Method to delete a subject
   onDelete(subject: Subject) {
     console.log('Delete clicked for:', subject);
     this.subjectService.deleteSubject(subject.id).subscribe({

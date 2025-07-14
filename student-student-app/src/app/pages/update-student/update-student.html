@@ -1,8 +1,11 @@
 <h2 class="title">Update Student</h2>
+
 <button mat-raised-button color="warn" routerLink="/students" class="back-button">
     Back
 </button>
-<form [formGroup]="studentForm" (ngSubmit)="onUpdate()" class="form-container">
+
+<form [formGroup]="studentForm" (ngSubmit)="onUpdate()" class="form-container">\
+
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Name</mat-label>
     <input matInput formControlName="name" />
@@ -26,4 +29,5 @@
   <button mat-raised-button color="primary" type="submit" [disabled]="!studentForm.valid">
     Save
   </button>
+  
 </form>

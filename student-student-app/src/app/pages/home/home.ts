@@ -7,10 +7,15 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatListModule, MatIconModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatListModule,
+    MatIconModule,
+    RouterModule
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
 
+export class Home {
 }
