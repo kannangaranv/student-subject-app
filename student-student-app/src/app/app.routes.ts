@@ -1,31 +1,56 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Home } from './pages/home/home'; 
-import { AuthCallback } from './pages/auth-callback/auth-callback';
-import { Login } from './pages/login/login';
-import { ViewStudents } from './pages/view-students/view-students';
-import { AddStudent } from './pages/add-student/add-student';
-import { UpdateStudent } from './pages/update-student/update-student';
-import { ViewSubjects } from './pages/view-subjects/view-subjects';
-import { AddSubject } from './pages/add-subject/add-subject';
-import { UpdateSubject } from './pages/update-subject/update-subject';
-import { ViewSubjectAssign } from './pages/view-subject-assign/view-subject-assign';
-import { AssignStudent } from './pages/assign-student/assign-student';
-import { AssignedStudent } from './pages/assigned-student/assigned-student';
+
 
 export const routes: Routes = [
-  { path: '', component: Login }, 
-  { path: 'home', component: Home}, 
-  { path: 'login/callback', component: AuthCallback },
-  { path: 'students', component: ViewStudents, pathMatch: 'full' },
-  { path: 'subjects', component: ViewSubjects, pathMatch: 'full' },
-  { path: 'students/add', component: AddStudent, pathMatch: 'full' },
-  { path: 'subjects/add', component: AddSubject, pathMatch: 'full' },
-  { path: 'students/update/:id', component: UpdateStudent, pathMatch: 'full' },
-  { path: 'subjects/update/:id', component: UpdateSubject, pathMatch: 'full' },
-  { path: 'assign', component: ViewSubjectAssign, pathMatch: 'full' },
-  { path: 'assign/students/:subjectId/:subjectName', component: AssignStudent, pathMatch: 'full' },
-  { path: 'assigned/students/:subjectId/:subjectName', component: AssignedStudent, pathMatch: 'full' },
+  {
+    path: '',
+    loadComponent: () => import('./pages/login/login').then(m => m.Login)
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/home').then(m => m.Home)
+  },
+  {
+    path: 'login/callback',
+    loadComponent: () => import('./pages/auth-callback/auth-callback').then(m => m.AuthCallback)
+  },
+  {
+    path: 'students',
+    loadComponent: () => import('./pages/view-students/view-students').then(m => m.ViewStudents)
+  },
+  {
+    path: 'subjects',
+    loadComponent: () => import('./pages/view-subjects/view-subjects').then(m => m.ViewSubjects)
+  },
+  {
+    path: 'students/add',
+    loadComponent: () => import('./pages/add-student/add-student').then(m => m.AddStudent)
+  },
+  {
+    path: 'subjects/add',
+    loadComponent: () => import('./pages/add-subject/add-subject').then(m => m.AddSubject)
+  },
+  {
+    path: 'students/update/:id',
+    loadComponent: () => import('./pages/update-student/update-student').then(m => m.UpdateStudent)
+  },
+  {
+    path: 'subjects/update/:id',
+    loadComponent: () => import('./pages/update-subject/update-subject').then(m => m.UpdateSubject)
+  },
+  {
+    path: 'assign',
+    loadComponent: () => import('./pages/view-subject-assign/view-subject-assign').then(m => m.ViewSubjectAssign)
+  },
+  {
+    path: 'assign/students/:subjectId/:subjectName',
+    loadComponent: () => import('./pages/assign-student/assign-student').then(m => m.AssignStudent)
+  },
+  {
+    path: 'assigned/students/:subjectId/:subjectName',
+    loadComponent: () => import('./pages/assigned-student/assigned-student').then(m => m.AssignedStudent)
+  },
 ];
 
 @NgModule({
