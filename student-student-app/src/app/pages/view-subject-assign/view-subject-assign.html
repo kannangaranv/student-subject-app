@@ -1,9 +1,10 @@
 <div class ="subject-page">
   <h2 class="page-title">Assign Students to Subjects</h2>
-    <div class="button-row">
-  </div>
+
   <div class="card-container" *ngIf="subjects.length > 0">
+
     <mat-card *ngFor="let subject of subjects" class="subject-card">
+      
       <mat-card-header>
         <mat-card-title>{{ subject.name }}</mat-card-title>
         <mat-card-subtitle>ID: {{ subject.id }}</mat-card-subtitle>

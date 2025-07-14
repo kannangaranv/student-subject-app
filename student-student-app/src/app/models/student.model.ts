@@ -5,9 +5,3 @@ export interface Student {
     age: number;
     address: string;
 }
-export interface AddUpdateStudentRequest {
-    name: string;
-    dateOfBirth: Date;
-    age: number;
-    address: string;
-}

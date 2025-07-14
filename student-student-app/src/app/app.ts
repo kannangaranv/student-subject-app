@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Sidebar } from './component/sidebar/sidebar';
 import { Topbar } from './component/topbar/topbar';
-import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',

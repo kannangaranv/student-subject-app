@@ -7,8 +7,15 @@ import { TokenService } from '../../services/token.service';
   standalone: true,
   template: `<p>Processing login...</p>`,
 })
+
 export class AuthCallback implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router, private tokenService: TokenService) {}
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
+
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -33,7 +40,6 @@ export class AuthCallback implements OnInit {
               console.error('Failed to get token:', err);
             }
           });
-
         this.router.navigate(['/home']);
       } else {
         console.error('No code found in URL');

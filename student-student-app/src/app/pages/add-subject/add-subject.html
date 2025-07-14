@@ -5,6 +5,7 @@
 </button>
 
 <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="form-container">
+
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Name</mat-label>
     <input matInput formControlName="name" required />
@@ -13,4 +14,5 @@
   <button mat-raised-button color="primary" type="submit" [disabled]="!subjectForm.valid">
     Save
   </button>
+  
 </form>

@@ -16,8 +16,14 @@ import { ChangeDetectorRef } from '@angular/core';
   selector: 'app-view-students',
   templateUrl: './view-students.html',
   styleUrls: ['./view-students.css'],
-  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule]
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    RouterModule
+  ]
 })
+
 export class ViewStudents implements OnInit {
   students: Student[] = [];
   isLoaded: boolean = false;
@@ -28,6 +34,7 @@ export class ViewStudents implements OnInit {
   ) {
   }
 
+  // Fetch all students on component initialization
   ngOnInit(): void {
     this.studentService.getAllStudents().subscribe({
       next: (data: Student[]) => {
@@ -43,7 +50,7 @@ export class ViewStudents implements OnInit {
     });
   }
 
-  
+  // Method to delete a student
   onDelete(student: Student) {
     console.log('Delete clicked for:', student);
     this.studentService.deleteStudent(student.id).subscribe({

@@ -22,6 +22,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './update-subject.html',
   styleUrl: './update-subject.css'
 })
+
 export class UpdateSubject implements OnInit {
   subjectForm!: FormGroup;
   subjectId!: string;
@@ -50,20 +51,21 @@ export class UpdateSubject implements OnInit {
     });
   }
 
- onUpdate(): void {
-    if (this.subjectForm.valid) {
-      this.subjectService.updateSubject(this.subjectId, this.subjectForm.value).subscribe({
-        next: () => {
-          alert('Subject updated successfully!');
-          this.router.navigate(['/subjects']);
-        },
-        error: (err) => {
-          console.error('Error updating subject:', err);
-          alert('Failed to update subject');
-        }
-      });
-    } else {
-      alert('Please fill in all required fields.');
+  // Method to update subject details
+  onUpdate(): void {
+      if (this.subjectForm.valid) {
+        this.subjectService.updateSubject(this.subjectId, this.subjectForm.value).subscribe({
+          next: () => {
+            alert('Subject updated successfully!');
+            this.router.navigate(['/subjects']);
+          },
+          error: (err) => {
+            console.error('Error updating subject:', err);
+            alert('Failed to update subject');
+          }
+        });
+      } else {
+        alert('Please fill in all required fields.');
+      }
     }
   }
-}

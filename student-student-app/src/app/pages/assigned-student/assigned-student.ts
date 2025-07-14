@@ -11,11 +11,18 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-assigned-student',
-  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './assigned-student.html',
   styleUrl: './assigned-student.css'
 })
+
 export class AssignedStudent implements OnInit{
+  
     students: Student[] = [];
     isLoaded: boolean = false;
     subjectId!: string;
@@ -33,6 +40,7 @@ export class AssignedStudent implements OnInit{
       this.loadStudents();
     }
 
+  // Load assigned students for the subject
     private loadStudents() {
     this.assignStudentService.getAssignedStudentsBySubjectId(this.subjectId).subscribe({
       next: (data: Student[]) => {
@@ -48,8 +56,8 @@ export class AssignedStudent implements OnInit{
     });
   }
 
+  // Method to handle student unassignment
   onUnAssign(student: Student) {
-    console.log('Unassign clicked for:', student);
     this.assignStudentService.unassignStudentFromSubject(this.subjectId, student.id).subscribe({
       next: () => {
         alert('Student unassigned successfully!');
@@ -62,5 +70,4 @@ export class AssignedStudent implements OnInit{
       }
     });
   }
-
 }

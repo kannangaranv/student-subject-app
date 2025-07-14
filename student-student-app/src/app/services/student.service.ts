@@ -6,51 +6,33 @@ import { TokenService } from './token.service';
 export class StudentService {
     constructor(private http: HttpClient, private tokenService: TokenService) {}
 
+    // Get all students
     getAllStudents() {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>('http://localhost:5000/students/GetAll', {
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-        });
+        return this.http.get<any>('http://localhost:5000/students/GetAll');
     }
 
+    // Get student by ID
     getStudentById(id: string) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.get<any>(`http://localhost:5000/students/GetById/${id}`,{
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-        });
+        return this.http.get<any>(`http://localhost:5000/students/GetById/${id}`);
     }
 
+    // Add a new student
     addStudent(student: any) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.post<any>('http://localhost:5000/students/Add', student, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }       
-        });
+        return this.http.post<any>('http://localhost:5000/students/Add', student);
     }
 
+    // Update an existing student
     updateStudent(id: string, student: any) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.put<any>(`http://localhost:5000/students/Update/${id}`, student, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }   
-        });
+        return this.http.put<any>(`http://localhost:5000/students/Update/${id}`, student);
     }
 
+    // Delete a student
     deleteStudent(id: string) {
         this.tokenService.checkAndRefreshAuthCode();
-        return this.http.delete<any>(`http://localhost:5000/students/Delete/${id}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        });
+        return this.http.delete<any>(`http://localhost:5000/students/Delete/${id}`);
     }
 }

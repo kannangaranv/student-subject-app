@@ -24,15 +24,17 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
   templateUrl: './update-student.html',
   styleUrls: ['./update-student.css']
 })
+
 export class UpdateStudent implements OnInit {
   studentForm!: FormGroup;
   studentId!: string;
   today: string = new Date().toISOString().split('T')[0]; 
 
+  // Custom validator to check if the date is not in the future
   dateNotInFutureValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const selectedDate = new Date(control.value);
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // ignore time portion
+    today.setHours(0, 0, 0, 0);
     return selectedDate > today ? { invalidDate: true } : null;
   };
 
@@ -43,6 +45,7 @@ export class UpdateStudent implements OnInit {
     private router: Router
   ) {}
 
+  //
   ngOnInit(): void {
     this.studentId = this.route.snapshot.paramMap.get('id')!;
     
@@ -61,6 +64,7 @@ export class UpdateStudent implements OnInit {
     });
   }
 
+  // Method to update student details
   onUpdate(): void {
     if (this.studentForm.invalid) return;
 
