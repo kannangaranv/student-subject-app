@@ -13,7 +13,5 @@ import { TokenService } from './services/token.service';
 
 export class App {
   protected title = 'student-student-app';
-  constructor(private tokenService: TokenService) {}
-
 }
 
