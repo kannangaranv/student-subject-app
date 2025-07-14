@@ -4,7 +4,7 @@
     Back
 </button>
 
-<form [formGroup]="studentForm" (ngSubmit)="onUpdate()" class="form-container">\
+<form [formGroup]="studentForm" (ngSubmit)="onUpdate()" class="form-container">
 
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Name</mat-label>
@@ -29,5 +29,5 @@
   <button mat-raised-button color="primary" type="submit" [disabled]="!studentForm.valid">
     Save
   </button>
-  
+
 </form>
